@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Let's Dance</title>
+        <style>
+            .frame {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                padding: 20px;
+            }
+            button {
+                width: 5em;
+                height: 2em;
+                font-size: 1em;
+            }
+            img {
+                transition: all 0.05s ease-in-out;
+                width: 18em;
+            }
+        </style>
+        <script>
+            function turnLeft() {
+                window.document.getElementById('dancing-girl').style.transform =
+                    'rotateY(0deg)';
+            }
+            function turnRight() {
+                window.document.getElementById('dancing-girl').style.transform =
+                    'rotateY(180deg)';
+            }
+            function letsShake() {
+                let status =
+                    window.document.getElementById('dance-btn').innerText;
+                if (
+                    (status != 'left' && status != 'right') ||
+                    status == 'right'
+                ) {
+                    turnRight();
+                    // console.log('左');
+                    status = 'left';
+                } else {
+                    turnLeft();
+                    // console.log('右');
+                    status = 'right';
+                }
+                window.document.getElementById('dance-btn').innerText = status;
+            }
+        </script>
+    </head>
+    <body>
+        <div class="frame">
+            <!-- src由dance.png修改为了snowman.png，当然也可以改回去试下 -->
+            <img
+                id="dancing-girl"
+                src="yuchi.png"
+                alt="dancing"
+                height="400em"
+            />
+            <div>
+                <button id="dance-btn" onclick="letsShake()">点我</button>
+            </div>
+        </div>
+    </body>
+</html>
